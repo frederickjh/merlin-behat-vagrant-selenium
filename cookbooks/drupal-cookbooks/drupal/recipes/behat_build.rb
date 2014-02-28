@@ -176,15 +176,11 @@ bash "configure-behat-editor" do
   code <<-EOH
   cd /vagrant/public/drupal.vbox.local/docroot
   chmod -R 777 /vagrant/public/drupal.vbox.local/docroot/sites/default/files
-  drush en behat_editor behat_editor_limit_tags behat_editor_services -y
-  drush composer-rebuild-file
-  rm #{working_dir}/composer.lock
-  /usr/bin/composer --working-dir=#{working_dir} install
+  drush en behat_editor behat_editor_limit_tags behat_editor_services behat_editor_tokenizer -y
   drush en github_behat_editor -y
-  chmod -R 777 /vagrant/public/drupal.vbox.local/docroot/sites/default/files  
   drush composer-rebuild-file
   rm #{working_dir}/composer.lock 1>/dev/null 2>&1
-  /usr/bin/composer --working-dir=#{working_dir} install
+  /usr/bin/composer --working-dir=#{working_dir} install -n
   EOH
 end
 
