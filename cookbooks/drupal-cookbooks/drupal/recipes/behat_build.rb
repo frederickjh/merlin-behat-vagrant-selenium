@@ -139,7 +139,7 @@ bash "configure-composer-module" do
   curl -sS https://getcomposer.org/installer | php
   php composer.phar install
   ln -s #{working_dir}/composer.phar /usr/bin/composer
-  rm #{working_dir}/composer.lock
+  rm #{working_dir}/composer.lock 1>/dev/null 2>&1
   drush composer-rebuild-file
   /usr/bin/composr --working-dir=#{working_dir} install
   EOH
@@ -179,7 +179,7 @@ bash "configure-behat-editor" do
   drush en github_behat_editor -y
   chmod -R 777 /vagrant/public/drupal.vbox.local/docroot/sites/default/files  
   drush composer-rebuild-file
-  rm #{working_dir}/composer.lock
+  rm #{working_dir}/composer.lock 1>/dev/null 2>&1
   /usr/bin/composr --working-dir=#{working_dir} install
   EOH
 end
@@ -201,7 +201,7 @@ bash "configure-behat-editor-saucelabs-integration" do
     rm sites/default/files/composer/composer.json
     drush en behat_editor_saucelabs -y
     drush composer-rebuild-file
-    rm #{working_dir}/composer.lock
+    rm #{working_dir}/composer.lock 1>/dev/null 2>&1
     /usr/bin/composr --working-dir=#{working_dir} install
     EOH
 end
