@@ -4,6 +4,10 @@ include_recipe "mysql"
 include_recipe "drush"
 include_recipe "drush_make"
 
+
+working_dir = "/vagrant/public/drupal.vbox.local/docroot/sites/default/files/composer"
+
+
 #bash aliases
 
 # Add an admin user to mysql
@@ -134,7 +138,10 @@ bash "configure-composer-module" do
   cd /vagrant/public/drupal.vbox.local/docroot/sites/default/files/composer
   curl -sS https://getcomposer.org/installer | php
   php composer.phar install
-  drush composer-manager update
+  ln -s #{working_dir}/composer.phar /usr/bin/composer
+  rm #{working_dir}/composer.lock
+  drush composer-rebuild-file
+  /usr/bin/composr --working-dir=#{working_dir} install
   EOH
 end
 
@@ -171,7 +178,9 @@ bash "configure-behat-editor" do
   drush composer-manager update
   drush en github_behat_editor -y
   chmod -R 777 /vagrant/public/drupal.vbox.local/docroot/sites/default/files  
-  drush composer-manager update
+  drush composer-rebuild-file
+  rm #{working_dir}/composer.lock
+  /usr/bin/composr --working-dir=#{working_dir} install
   EOH
 end
 
@@ -191,6 +200,9 @@ bash "configure-behat-editor-saucelabs-integration" do
     chmod -R 777 sites/all/libraries
     rm sites/default/files/composer/composer.json
     drush en behat_editor_saucelabs -y
+    drush composer-rebuild-file
+    rm #{working_dir}/composer.lock
+    /usr/bin/composr --working-dir=#{working_dir} install
     EOH
 end
 
@@ -199,10 +211,9 @@ bash "final-composer-rebuild" do
     cd /vagrant/public/drupal.vbox.local/docroot
     sudo chmod -R 777 sites/default/files
     drush rr
-    drush composer-manager update -y
+    /usr/bin/composr --working-dir=#{working_dir} update
   EOH
 end
-
 
 # update to php 5.4 http://www.barryodonovan.com/index.php/2012/05/22/ubuntu-12-04-precise-pangolin-and-php-5-4-again
 # dont execute the grub updates as they require input
@@ -214,11 +225,4 @@ bash "udpate-php54" do
 DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install php5
 # TODO install apc, xhprof and xdebug
   EOH
-end
-# one final update to remove the manual step if not necessary this time. 
-bash "one-final-composer-manager-update" do
-  code <<-EOH
-  cd /vagrant/public/drupal.vbox.local/docroot
-    drush composer-manager update -y
-EOH
 end
