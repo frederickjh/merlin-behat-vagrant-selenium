@@ -143,7 +143,7 @@ bash "configure-composer-module" do
   ln -s #{working_dir}/composer.phar /usr/bin/composer
   rm #{working_dir}/composer.lock 1>/dev/null 2>&1
   drush composer-rebuild-file
-  /usr/bin/composr --working-dir=#{working_dir} install
+  /usr/bin/composer --working-dir=#{working_dir} install
   EOH
 end
 
