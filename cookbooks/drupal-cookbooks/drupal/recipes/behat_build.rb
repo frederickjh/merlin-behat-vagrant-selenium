@@ -134,6 +134,8 @@ bash "configure-composer-module" do
   chmod 777 /vagrant/public/drupal.vbox.local/docroot/sites/default/files/composer
   drush vset composer_manager_file_dir public://composer
   drush en og composer_manager -y
+  drush vset composer_manager_autobuild_file 0
+  drush vset composer_manager_autobuild_packages 0
   drush vset theme_default bootstrap
   cd /vagrant/public/drupal.vbox.local/docroot/sites/default/files/composer
   curl -sS https://getcomposer.org/installer | php
@@ -175,7 +177,9 @@ bash "configure-behat-editor" do
   cd /vagrant/public/drupal.vbox.local/docroot
   chmod -R 777 /vagrant/public/drupal.vbox.local/docroot/sites/default/files
   drush en behat_editor behat_editor_limit_tags behat_editor_services -y
-  drush composer-manager update
+  drush composer-rebuild-file
+  rm #{working_dir}/composer.lock
+  /usr/bin/composr --working-dir=#{working_dir} install
   drush en github_behat_editor -y
   chmod -R 777 /vagrant/public/drupal.vbox.local/docroot/sites/default/files  
   drush composer-rebuild-file
