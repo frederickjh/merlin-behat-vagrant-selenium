@@ -1,4 +1,10 @@
 # VirtualBox Vagrant Chef Drupal Behat Editor install
+
+Google doc of install [here](https://docs.google.com/document/d/1AsLmknwkSv5nheziaf6xlSPDxTHy1WbCWKvVw2IP5WU/pub)
+
+Youtube video of install [here](https://www.youtube.com/watch?v=PFRnudS_AVI&feature=youtu.be)
+
+
 Installs a complete preconfigured environment to use the behat_editor, behat_editor_saucelabs and behat_editor_github modules
 
 Based on [drupal.org/project/vagrant](http://drupal.org/project/vagrant/)
