@@ -193,9 +193,6 @@ bash "install-selenium-server" do
 end
 
 bash "configure-behat-editor-saucelabs-integration" do
-  # this will hose the registry so rebuild it
-  # there is a conflict with the version of behat somewhere which prevents the composer.json
-  # getting rewritten correctly for saucelabs, so nuke the composer.json first and rebuild
   code <<-EOH
     cd /vagrant/public/drupal.vbox.local/docroot    
     chmod -R 777 sites/all/libraries
