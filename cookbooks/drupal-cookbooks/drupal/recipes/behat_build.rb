@@ -181,7 +181,7 @@ bash "configure-behat-editor" do
   drush en github_behat_editor -y
   drush composer-rebuild-file
   rm #{working_dir}/composer.lock 1>/dev/null 2>&1
-  /usr/bin/composer --working-dir=#{working_dir} install -n
+  /usr/bin/composer --working-dir=#{working_dir} update -n
   EOH
 end
 
