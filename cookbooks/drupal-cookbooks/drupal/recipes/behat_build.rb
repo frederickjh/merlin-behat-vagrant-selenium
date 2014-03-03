@@ -173,11 +173,12 @@ EOH
 end
 
 bash "configure-behat-editor" do
-  # Composer manager may fail and need to be run manually if input is required or use the php cmdline instead
   code <<-EOH
   cd /vagrant/public/drupal.vbox.local/docroot
   chmod -R 777 /vagrant/public/drupal.vbox.local/docroot/sites/default/files
-  drush en behat_editor behat_editor_limit_tags behat_editor_services behat_editor_tokenizer -y
+  drush en behat_editor -y
+  drush en behat_editor_services -y
+  drush en behat_editor_tokenizer -y
   drush en github_behat_editor -y
   drush composer-rebuild-file
   rm #{working_dir}/composer.lock 1>/dev/null 2>&1
