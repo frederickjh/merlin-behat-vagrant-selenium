@@ -141,6 +141,7 @@ bash "configure-composer-module" do
   curl -sS https://getcomposer.org/installer | php
   php composer.phar install
   ln -s #{working_dir}/composer.phar /usr/bin/composer
+  composer config -g github-oauth.github.com ed17f1e7cce37406bcb87f28245a284db42808c3
   rm #{working_dir}/composer.lock 1>/dev/null 2>&1
   drush composer-rebuild-file
   /usr/bin/composer --working-dir=#{working_dir} install
