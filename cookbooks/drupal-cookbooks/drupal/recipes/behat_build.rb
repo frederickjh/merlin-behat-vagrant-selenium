@@ -192,18 +192,20 @@ bash "install-selenium-server" do
   EOH
 end
 
-bash "configure-behat-editor-saucelabs-integration" do
-  code <<-EOH
-    cd /vagrant/public/drupal.vbox.local/docroot    
-    chmod -R 777 sites/all/libraries
-    rm #{working_dir}/composer.lock 1>/dev/null 2>&1
-    drush rr -y
-    drush en behat_editor_saucelabs -y
-    drush composer-rebuild-file
-    rm #{working_dir}/composer.lock 1>/dev/null 2>&1
-    /usr/bin/composer --working-dir=#{working_dir} install
-    EOH
-end
+# @TODO come back later for this right now not working
+#    
+# bash "configure-behat-editor-saucelabs-integration" do
+#   code <<-EOH
+#     cd /vagrant/public/drupal.vbox.local/docroot    
+#     chmod -R 777 sites/all/libraries
+#     rm #{working_dir}/composer.lock 1>/dev/null 2>&1
+#     drush rr -y
+#     drush en behat_editor_saucelabs -y
+#     drush composer-rebuild-file
+#     rm #{working_dir}/composer.lock 1>/dev/null 2>&1
+#     /usr/bin/composer --working-dir=#{working_dir} install
+#     EOH
+# end
 
 bash "final-composer-rebuild" do
   code <<-EOH
