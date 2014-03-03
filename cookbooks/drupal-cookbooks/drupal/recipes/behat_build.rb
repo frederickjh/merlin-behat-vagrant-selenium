@@ -70,7 +70,7 @@ end
 
 bash "open-files-directory-permissions" do
   code <<-EOH  
-  chmod 777 /vagrant/public/drupal.vbox.local/docroot/sites/default/settings.php
+  chmod 775 /vagrant/public/drupal.vbox.local/docroot/sites/default/settings.php
   EOH
 end
 
@@ -139,12 +139,11 @@ bash "configure-composer-module" do
   drush vset theme_default bootstrap
   cd /vagrant/public/drupal.vbox.local/docroot/sites/default/files/composer
   curl -sS https://getcomposer.org/installer | php
-  php composer.phar install
   ln -s #{working_dir}/composer.phar /usr/bin/composer
   composer config -g github-oauth.github.com ed17f1e7cce37406bcb87f28245a284db42808c3
   rm #{working_dir}/composer.lock 1>/dev/null 2>&1
   drush composer-rebuild-file
-  /usr/bin/composer --working-dir=#{working_dir} install
+  /usr/bin/composer --working-dir=#{working_dir} update
   EOH
 end
 
@@ -208,14 +207,14 @@ end
 #     EOH
 # end
 
-bash "final-composer-rebuild" do
-  code <<-EOH
-    cd /vagrant/public/drupal.vbox.local/docroot
-    sudo chmod -R 777 sites/default/files
-    drush rr -y
-    /usr/bin/composer --working-dir=#{working_dir} update
-  EOH
-end
+# bash "final-composer-rebuild" do
+#   code <<-EOH
+#     cd /vagrant/public/drupal.vbox.local/docroot
+#     sudo chmod -R 777 sites/default/files
+#     drush rr -y
+#     /usr/bin/composer --working-dir=#{working_dir} update
+#   EOH
+# end
 
 # update to php 5.4 http://www.barryodonovan.com/index.php/2012/05/22/ubuntu-12-04-precise-pangolin-and-php-5-4-again
 # dont execute the grub updates as they require input
