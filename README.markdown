@@ -14,6 +14,8 @@ Maintained by steve@appnovation.com
 --------
 # HOW TO INSTALL
 
+There is a video [here](http://youtu.be/PFRnudS_AVI)  as well
+
 1. Download and Install [VirtualBox](http://www.virtualbox.org/) (ensure you are on the latest version 4.0.8+)
 2. Install [vagrant](http://vagrantup.com/v1/docs/getting-started/index.html)
 3. Download or Clone this project go to the folder and launch the box:
@@ -36,6 +38,9 @@ To connect to the console of you instance: ```vagrant ssh```
     
 --------
 # HOW TO TEST
+
+There is a video [here](http://youtu.be/PFRnudS_AVI)  as well
+
 * Navigate to /admin/behat/add
 * Follow the link to add your saucelabs credentials 
 * Load the wikipedia sample test 
