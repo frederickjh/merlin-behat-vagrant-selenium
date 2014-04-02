@@ -9,7 +9,7 @@ Installs a complete preconfigured environment to use the behat_editor, behat_edi
 
 Based on [drupal.org/project/vagrant](http://drupal.org/project/vagrant/)
 
-Maintained by steve@appnovation.com
+Maintained by alfrednutile@gmail.com original branch supported by steve@appnovation.com
 
 --------
 # HOW TO INSTALL
