@@ -52,7 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # default configuration suitable for local development and shares an nfs
   # mounted directory at /vagrant
   config.vm.network "private_network", ip: "33.33.33.10"
-  config.vm.synced_folder ".", "/vagrant", type: "nfs"
+  config.vm.synced_folder ".", "/vagrant", :owner => "www-data", :group => "www-data"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
