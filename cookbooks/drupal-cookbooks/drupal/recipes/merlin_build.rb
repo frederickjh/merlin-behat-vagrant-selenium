@@ -27,7 +27,7 @@ end
 # drush make a default drupal site example
 bash "install-default-drupal-makefile" do
   code <<-EOH
-mkdir -p /vagrant/public/drupal.vbox.local
+(mkdir -p /vagrant/public/drupal.vbox.local)
   EOH
   not_if { File.exists?("/vagrant/public/drupal.vbox.local/behat_build.make") }
 end
