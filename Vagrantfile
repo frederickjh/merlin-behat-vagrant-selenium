@@ -127,7 +127,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           :server_root_password => "root"
         },
         :hosts => {
-          :localhost_aliases => ["drupal.vbox.local", "dev-site.vbox.local"],
+          :localhost_aliases => ["drupal.vbox.local", "dev-site.vbox.local"]
+          },
         :drush => {
           :install_method => 'pear',
           :version => '6.0',
