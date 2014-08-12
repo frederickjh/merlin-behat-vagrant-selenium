@@ -18,8 +18,6 @@ Youtube video of install [here](https://www.youtube.com/watch?v=PFRnudS_AVI&feat
 
 <td><p><b>Future Plans are to add the Merlin module and any other needed software to allow automated building of site features using Merlin. The main idea is to be able to quickly setup a environment to work with Merlin.</b></p>
 
-Based on [drupal.org/project/vagrant](http://drupal.org/project/vagrant/)
-
 <p>Read more about Merlin on it's <a href="https://www.drupal.org/sandbox/churel/2160815">sandbox page</a>. It has applied for project status and is awaiting approval.</p>
 <p><a href="https://www.youtube.com/watch?v=EyINJdXY35Y">View the presentation at DrupalCamp Toronto 2014 about Merlin.</a></p>
 <a href="http://therefore.ca/blog/birth-merlin">Read the blog post by Churel about Merlin.</a> 
