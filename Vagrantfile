@@ -131,7 +131,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           },
         :drush => {
           :install_method => 'pear',
-          :version => '6.0',
+          :version => '5.8.0',
         }
       })
     
