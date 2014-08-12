@@ -32,7 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.network :public_network
 
   # enable this to have the vm bridge your local network and get an ip from dhcp
-  # else it will only be available on your local machine at 33.33.33.10
+  # else it will only be available on your local machine at 10.0.0.10
   # this is suitable for local development
   # the software hasnt been secured to any great degree so please use caution when 
   # deploying a bridged network interface
@@ -51,7 +51,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # default configuration suitable for local development and shares an nfs
   # mounted directory at /vagrant
-  config.vm.network "private_network", ip: "33.33.33.10"
+  config.vm.network "private_network", ip: "10.0.0.10"
   config.vm.synced_folder ".", "/vagrant", :owner => "vagrant", :group => "www-data"
   
   # Provider-specific configuration so you can fine-tune various
@@ -63,13 +63,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   vb.gui = true
   
       # Use VBoxManage to customize the VM. For example to change memory:
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", "1024"]
   
       # more cpus to try and speed up build time
       vb.customize ["modifyvm", :id, "--cpus", "2"]
   
       # increase cpu cap
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "90"]
+      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "80"]
   
       # this is apparenly required for a 64 bit guest and multiple virtual cpus
       vb.customize ["modifyvm", :id, "--ioapic", "on"]
@@ -118,7 +118,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_role("behat_dev_environment")
         
     #Pfizer specific build
-    chef.add_recipe('drupal::behat_build')
+    chef.add_recipe('drupal::merlin_build')
     
     # This is basically the Vagrant role.
     chef.json.merge!({
