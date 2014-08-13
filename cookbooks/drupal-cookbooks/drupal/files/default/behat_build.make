@@ -12,7 +12,7 @@ projects[ctools][subdir] = "contrib"
 projects[ctools][version] = "1.3"
 
 projects[composer_manager][subdir] = "contrib"
-projects[composer_manager][version] = "1.0-rc1"
+projects[composer_manager][version] = "7.x-1.6"
 
 projects[devel][subdir] = "contrib"
 
