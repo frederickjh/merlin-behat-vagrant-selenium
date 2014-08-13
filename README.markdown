@@ -1,5 +1,7 @@
-# Merlin VirtualBox Vagrant Chef Drupal Behat Editor Selenium install
+# DO NOT USE WORK IN PROGRESS - I am not sure if I will continue with this project or delete after finding a better starting point.  --  Merlin VirtualBox Vagrant Chef Drupal Behat Editor Selenium install
 Installs a complete preconfigured environment to use merlin, behat_editor, behat_editor_saucelabs and behat_editor_github modules
+
+Currently this project never finish the vagrant up to properly provision the virtual box. I have also tried the other 2 forks with the same results, sorry. :(
 
 Originally based on [drupal.org/project/vagrant](http://drupal.org/project/vagrant/)
 
